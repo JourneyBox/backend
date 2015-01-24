@@ -13,7 +13,7 @@
 
 Route::group(array('prefix' => 'eventbrite'), function()
 {
-	Route::get('requestToken', 'EventbriteController@requestToken'); // ?id=
+	Route::get('requestToken', 'EventbriteController@requestToken'); // ?code=
 	Route::get('assignToken', 'EventbriteController@assignToken'); // ?id=&access_token=
 	Route::get('getUpcomingEvents', 'EventbriteController@getUpcomingEvents'); // ?id=
 	Route::get('getLondonEvents', 'EventbriteController@getLondonEvents'); // ?id=
