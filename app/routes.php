@@ -11,6 +11,11 @@
 |
 */
 
+Route::group(array('prefix' => 'dropbox'), function()
+{
+	Route::get('requestToken', 'DropboxController@requestToken'); // ?code=
+});
+
 Route::group(array('prefix' => 'eventbrite'), function()
 {
 	Route::get('requestToken', 'EventbriteController@requestToken'); // ?code=

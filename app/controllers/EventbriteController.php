@@ -16,8 +16,8 @@ class EventbriteController extends BaseController {
         $response = $client->post('https://www.eventbrite.com/oauth/token', [
             'body' => [
                 'code' => $code,
-                'client_secret' => Config::get('eventbrite.client_secret'),
-                'client_id' => Config::get('eventbrite.api_key'),
+                'client_secret' => Config::get('services.eventbrite.client_secret'),
+                'client_id' => Config::get('services.eventbrite.api_key'),
                 'grant_type' => 'authorization_code'
             ]
         ]);
