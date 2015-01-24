@@ -15,10 +15,10 @@ class CreateUsersTable extends Migration {
 		Schema::create('users', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->text('dropbox_user_id')->unique();
-			$table->text('dropbox_access_token');
-			$table->text('dropbox_display_name');
-			$table->text('eventbrite_access_token');
+			$table->text('dropbox_user_id')->unique()->nullable();
+			$table->text('dropbox_access_token')->nullable();
+			$table->text('dropbox_display_name')->nullable();
+			$table->text('eventbrite_access_token')->nullable();
 			$table->timestamps();
 		});
 	}

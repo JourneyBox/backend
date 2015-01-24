@@ -13,7 +13,7 @@ class EventbriteController extends BaseController {
 
     public function getUpcomingEvents($id) {
         $user = User::findOrFail($id);
-        $access_token = $user->$access_token;
+        $access_token = $user->$dropbox_access_token;
         if (empty($access_token)) {
             return Response::json(['error' => true, 'message' => 'The user specified does not have an access token.'], 400);
         }
@@ -22,14 +22,22 @@ class EventbriteController extends BaseController {
             'headers' => ['Authorization' => 'Bearer ' . $access_token]
         ]);
         $json = $response->json();
+        if ($json['status_code'] == '401') {
+            $user->dropbox_access_token = NULL;
+            return Response::json(['error' => true, 'message' => 'The access token is invalid.'], 401);
+        }
 
         $upcomingEvents = array();
         foreach ($json['orders'] as $order) {
-            if (Carbon::createFromTimestampUTC($order['event']['end']['utc']) > Carbon::now('UTC')) {
+            if (Carbon::createFromFormat(Carbon::ISO8601, $order['event']['end']['utc']) > Carbon::now('UTC')) {
                 $upcomingEvents[] = $order;
             }
         }
         return Response::json($upcomingEvents, 200);
     }
-    
+
+    public function getLocalEvents(){
+        
+    }
+
 }
