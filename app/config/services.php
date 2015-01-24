@@ -35,7 +35,12 @@ return array(
 
     'transport' => [
         'app_id'  => $_ENV['TRANSPORT_APP_ID'],
-        'api_key'    => $_ENV['TRANSPORT_API_KEY'],
-    ]
+        'api_key' => $_ENV['TRANSPORT_API_KEY'],
+    ],
+
+	'eventbrite' => [
+		'client_secret' => $_ENV['EVENTBRITE_CLIENT_SECRET'],
+		'api_key' => $_ENV['EVENTBRITE_API_SECRET'],
+	]
 
 );
