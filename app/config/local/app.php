@@ -13,6 +13,8 @@ return array(
 	|
 	*/
 
+    'url' => 'journeybox.local  ',
+
 	'debug' => true,
 
     'providers' => append_config([

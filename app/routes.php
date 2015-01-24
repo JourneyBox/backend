@@ -23,3 +23,17 @@ Route::group(array('prefix' => 'eventbrite'), function()
 	Route::get('getUpcomingEvents', 'EventbriteController@getUpcomingEvents'); // ?id=
 	Route::get('getLondonEvents', 'EventbriteController@getLondonEvents'); // ?id=
 });
+
+Route::group(array('prefix' => 'travel'), function()
+{
+	Route::get('/', 'TransportController@requestToken');
+});
+
+Route::group(array('prefix' => 'oauth'), function()
+{
+    Route::get('/dropbox', 'OAuthController@dropbox');
+    //Route::get('/eventbrite', 'OAuthController@eventbrite');
+});
+
+
+Route::get('/', 'HomeController@index');

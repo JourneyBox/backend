@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration {
 			$table->string('dropbox_display_name')->nullable();
 			$table->string('eventbrite_access_token')->nullable();
 			$table->timestamps();
+            $table->rememberToken();
 		});
 	}
 
