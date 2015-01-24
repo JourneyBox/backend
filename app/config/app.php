@@ -123,8 +123,7 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 
         'GrahamCampbell\Dropbox\DropboxServiceProvider',
-        
-        'JourneyBox\Dropbox\DropboxServiceProvider',
+
         'JourneyBox\Transport\TransportServiceProvider',
 
     ),
