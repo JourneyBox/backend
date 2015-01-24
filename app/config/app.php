@@ -122,7 +122,9 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 
-	),
+        'GrahamCampbell\Dropbox\DropboxServiceProvider'
+
+    ),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -188,6 +190,8 @@ return array(
 		'URL'               => 'Illuminate\Support\Facades\URL',
 		'Validator'         => 'Illuminate\Support\Facades\Validator',
 		'View'              => 'Illuminate\Support\Facades\View',
+
+        'Dropbox' => 'GrahamCampbell\Dropbox\Facades\Dropbox'
 
 	),
 
