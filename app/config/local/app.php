@@ -13,7 +13,7 @@ return array(
 	|
 	*/
 
-    'url' => 'journeybox.local  ',
+    'url' => 'journeybox.local',
 
 	'debug' => true,
 

@@ -36,4 +36,5 @@ Route::group(array('prefix' => 'oauth'), function()
 });
 
 
+Route::get('/dashboard', 'DashboardController@index');
 Route::get('/', 'HomeController@index');

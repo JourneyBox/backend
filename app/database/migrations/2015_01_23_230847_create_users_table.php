@@ -15,6 +15,7 @@ class CreateUsersTable extends Migration {
 		Schema::create('users', function(Blueprint $table)
 		{
 			$table->increments('id');
+            $table->string('display_name');
 			$table->string('dropbox_user_id')->unique()->nullable();
 			$table->string('dropbox_access_token')->nullable();
 			$table->string('dropbox_display_name')->nullable();
