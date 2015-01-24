@@ -13,6 +13,7 @@
 
 Route::group(array('prefix' => 'eventbrite'), function()
 {
+	Route::get('checkAccessToken/{id}', 'EventbriteController@checkAccessToken');
 	Route::get('storeAccessToken/{id}/{access_token}', 'EventbriteController@storeAccessToken');
 	Route::get('getUpcomingEvents/{id}', 'EventbriteController@getUpcomingEvents');
 	Route::get('getLondonEvents/{id}', 'EventbriteController@getLondonEvents');
