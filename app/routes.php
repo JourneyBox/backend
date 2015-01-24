@@ -18,6 +18,7 @@ Route::group(array('prefix' => 'api'), function()
 	{
 		Route::get('storeAccessToken/{id}/{access_token}', 'EventbriteController@storeAccessToken');
 		Route::get('getUpcomingEvents/{id}', 'EventbriteController@getUpcomingEvents');
+		Route::get('getLondonEvents/{id}', 'EventbriteController@getLondonEvents');
 	});
 
 });

@@ -9,6 +9,8 @@ class EventbriteController extends BaseController {
         $user = User::findOrFail($id);
         $user->$access_token = $access_token;
         $user->update();
+
+        return Response::json('success', 200);
     }
 
     public function getUpcomingEvents($id) {
@@ -24,6 +26,7 @@ class EventbriteController extends BaseController {
         $json = $response->json();
         if ($json['status_code'] == '401') {
             $user->dropbox_access_token = NULL;
+            $user->update();
             return Response::json(['error' => true, 'message' => 'The access token is invalid.'], 401);
         }
 
@@ -33,11 +36,28 @@ class EventbriteController extends BaseController {
                 $upcomingEvents[] = $order;
             }
         }
+
         return Response::json($upcomingEvents, 200);
     }
 
-    public function getLocalEvents(){
-        
+    public function getLondonEvents($id){
+        $user = User::findOrFail($id);
+        $access_token = $user->$dropbox_access_token;
+        if (empty($access_token)) {
+            return Response::json(['error' => true, 'message' => 'The user specified does not have an access token.'], 400);
+        }
+        $client = new Client();
+        $response = $client->get('https://www.eventbriteapi.com/v3/events/search/?venue.city=London', [
+            'headers' => ['Authorization' => 'Bearer ' . $access_token]
+        ]);
+        $json = $response->json();
+        if ($json['status_code'] == '401') {
+            $user->dropbox_access_token = NULL;
+            $user->update();
+            return Response::json(['error' => true, 'message' => 'The access token is invalid.'], 401);
+        }
+
+        return Response::json($json, 200);
     }
 
 }
