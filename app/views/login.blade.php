@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="text-center">
-    <h1>Journey Box</h1>
+    <h1>Null Box</h1>
 </div>
 
 <form class="form-signin">
