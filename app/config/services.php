@@ -28,4 +28,14 @@ return array(
 		'secret' => '',
 	),
 
+    'dropbox' => [
+        'token'  => $_ENV['DROPBOX_TOKEN'],
+        'app'    => $_ENV['DROPBOX_APP'],
+    ],
+
+    'transport' => [
+        'app_id'  => $_ENV['TRANSPORT_APP_ID'],
+        'app_key'    => $_ENV['TRANSPORT_APP_KEY'],
+    ]
+
 );
