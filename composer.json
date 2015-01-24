@@ -13,6 +13,9 @@
         "barryvdh/laravel-ide-helper": "~1.11"
     },
 	"autoload": {
+        "psr-0": {
+            "JourneyBox": "app/"
+        },
 		"classmap": [
 			"app/commands",
 			"app/controllers",

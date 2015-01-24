@@ -35,7 +35,7 @@ return array(
 
     'transport' => [
         'app_id'  => $_ENV['TRANSPORT_APP_ID'],
-        'app_key'    => $_ENV['TRANSPORT_APP_KEY'],
+        'api_key'    => $_ENV['TRANSPORT_API_KEY'],
     ]
 
 );
