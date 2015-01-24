@@ -48,6 +48,9 @@ Log::useFiles(storage_path().'/logs/laravel.log');
 
 App::error(function(Exception $exception, $code)
 {
+	if ($exception instanceof \Illuminate\Database\Eloquent\ModelNotFoundException) {
+		return Response::json(['error' => true, 'message' => 'The model is not found.'], 400);
+	}
 	Log::error($exception);
 });
 

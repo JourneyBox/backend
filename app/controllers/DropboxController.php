@@ -1,5 +1,5 @@
 <?php
 
-class DropboxController extends BaseController  {
-    1
+class DropboxController extends BaseController {
+
 }

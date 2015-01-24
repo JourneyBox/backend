@@ -16,8 +16,9 @@ class CreateUsersTable extends Migration {
 		{
 			$table->increments('id');
 			$table->text('dropbox_user_id')->unique();
-			$table->text('access_token');
-			$table->text('display_name');
+			$table->text('dropbox_access_token');
+			$table->text('dropbox_display_name');
+			$table->text('eventbrite_access_token');
 			$table->timestamps();
 		});
 	}
