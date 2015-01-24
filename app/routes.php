@@ -13,8 +13,8 @@
 
 Route::group(array('prefix' => 'eventbrite'), function()
 {
-	Route::get('checkAccessToken/{id}', 'EventbriteController@checkAccessToken');
-	Route::get('storeAccessToken/{id}/{access_token}', 'EventbriteController@storeAccessToken');
-	Route::get('getUpcomingEvents/{id}', 'EventbriteController@getUpcomingEvents');
-	Route::get('getLondonEvents/{id}', 'EventbriteController@getLondonEvents');
+	Route::get('requestToken', 'EventbriteController@requestToken'); // ?id=
+	Route::get('assignToken', 'EventbriteController@assignToken'); // ?id=&access_token=
+	Route::get('getUpcomingEvents', 'EventbriteController@getUpcomingEvents'); // ?id=
+	Route::get('getLondonEvents', 'EventbriteController@getLondonEvents'); // ?id=
 });
