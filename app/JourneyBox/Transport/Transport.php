@@ -22,8 +22,12 @@ class Transport
 
     public function getRoutesFor($from, $to, \DateTime $journeyDate = null)
     {
-        $from  = str_replace(' ', '+', $to);
+        $from  = str_replace(' ', '+', $from);
         $to  = str_replace(' ', '+', $to);
+
+        if ($cache = \Cache::get($from.$to)) {
+            return $cache;
+        }
 
         // If no date specified, use now.
         if ($journeyDate === null) {
@@ -33,13 +37,15 @@ class Transport
         $date = $journeyDate->format('Y-m-d');
         $time = $journeyDate->format('H:i');
 
-        $request = $this->client->createRequest('GET',"uk/public/journey/from/{$from}/to/{$to}/at/{$date}/{$time}.js", [
+        $request = $this->client->createRequest('GET',"uk/public/journey/from/{$from}/to/{$to}/at/{$date}/{$time}.json", [
             'query' => $this->getQuery()
         ]);
 
-        var_dump($request->getUrl(), $request->getBody(), $request->getQuery());
+        $response = $this->client->send($request)->json();
 
-        return $this->client->send($request)->json();
+        \Cache::forever($from.$to, $response);
+
+        return $response;
     }
 
     private function getQuery($params = [])
